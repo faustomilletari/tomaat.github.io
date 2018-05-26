@@ -85,6 +85,21 @@
 		width: 60em;
 	}
 
+    .scrolling-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    
+        .card {
+            flex: 0 0 auto;
+            transition: 0.3s;
+        }
+        
+        .description {
+            overflow-x: hidden;
+        }
+    }
+
 	@media screen and (max-width: 1680px) {
 
 		.container.\31 25\25 {

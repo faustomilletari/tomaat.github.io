@@ -15,57 +15,41 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
-	<body>
-
+	<body onload="loadDoc()">
+    
 		<!-- Header -->
 			<section id="header">
 				<div class="inner">
 					<span class="icon major fa-cloud"></span>
-					<h1>Hi! I'm <strong>TOMAAT</strong>, a new way to<br />
-					process <strong>medical volumes</strong> on the cloud.</h1>
-					<p>my aim is to help you deploy, compare and use your deep learning models<br />
-					  by making them easily accessible in the cloud. <br />
-                      I provide both server-side and client-side packages for medical image segmentation in 3D. </p>
+					<h1><strong>TOMAAT</strong> allows you to make your
+                    <strong>research</strong> <br /> available to everyone in the world.</h1>
+					<p>You can now deploy compare and use <strong>deep learning models</strong> in a straightforward manner.<br />
+                    Everything runs in the cloud, so that you don't need 'beefy' hardware to obtain your results.<br />
+                      TOMAAT provides you with both server-side and client-side packages to make this possible. </p>
 					<ul class="actions">
 						<li><a href="https://github.com/faustomilletari/TOMAAT" target="_blank" class="button">GitHub</a></li>
+                        <li><a href="https://hub.docker.com/r/tomaat/services/" target="_blank" class="button">DockerHub</a></li>
                         <li><a href="#four" class="button scrolly">Host Model</a></li>
+                        <li><a href="https://tomaat.readthedocs.io" target="_blank" class="button">Docs</a></li>
 					</ul>
 				</div>
 			</section>
             
         <!-- One -->
-            <section id="one" class="main style1">
+            <section id="one" class="main style1 special">
+                
                 <div class="container">
-                    <div class="row 150%">
-                        <div class="6u 12u$(medium)">
-                            <header class="major">
-                                <h2>Dreaming of seeing your research having an impact on the world?</h2>
-                            </header>
-                            <p>Take your trained deep learning model and pair it up with TOMAAT. We will wrap it into a convenient interface that allows users to access it remotely through 3D image visualization tools such as 3D Slicer, or through command line interface.</p>
-                        </div>
-                        <div class="6u$ 12u$(medium) important(medium)">
-                            <span class="image tom"><img src="images/pic_half.jpg" alt="" /></span>
-                        </div>
-                    </div>
+                    
+                    <header class="major">
+                        <h2>Current TOMAAT Services</h2>
+                    </header>
+                    <p>You can find here a list of publicly accessible TOMAAT services. This list is refreshed in real time and therefore contains updated information. These servers are reachable using TOMAAT client by either using the announcement service or establishing a direct connection.</p>
+                    
+                    <div id="serverlist", class="scrolling-wrapper"></div>
+                    
                 </div>
             </section>
             
-            <section id="one_bis" class="main style1">
-                <div class="container">
-                    <div class="row 150%">
-                        <div class="6u 12u$(medium) important(medium)">
-                            <span class="image tom"><img src="images/pic_full.jpg" alt="" /></span>
-                        </div>
-                        <div class="6u$ 12u$(medium)">
-                            <header class="major">
-                                <h2>Dreaming of trying the latest innovations in deep learning for healthcare?</h2>
-                            </header>
-                            <p>Use our 3D Slicer extension, or the command line interface to run inferences on your own data on remote machines. You will be able to know what methods are available at any given time in the cloud through our endpoint announcement service and get fast results.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
 
 		<!-- Two -->
 			<section id="two" class="main style2">
@@ -93,6 +77,39 @@
 					</div>
 				</div>
 			</section>
+            
+            <section id='one_bis', class='main style1'>
+                <div class="container">
+                    <div class="row 150%">
+                        <div class="6u 12u$(medium)">
+                            <header class="major">
+                                <h2>Your research can finally have an impact</h2>
+                            </header>
+                            <p>Take your trained deep learning model and pair it up with TOMAAT. You will obtain a service exposing a convenient interface that allows users to access it remotely. TOMAAT client is convenient and already integrated in 3D image visualization tools such as 3D Slicer.</p>
+                        </div>
+                        <div class="6u$ 12u$(medium) important(medium)">
+                            <span class="image tom"><img src="images/pic_half.jpg" alt="" /></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="one_ter" class="main style1">
+                <div class="container">
+                    <div class="row 150%">
+                        <div class="6u 12u$(medium) important(medium)">
+                            <span class="image tom"><img src="images/pic_full.jpg" alt="" /></span>
+                        </div>
+                        <div class="6u$ 12u$(medium)">
+                            <header class="major">
+                                <h2>Your workflow can benefit from state-of-the-art methods</h2>
+                            </header>
+                            <p>Use our 3D Slicer extension, or the command line interface to run inference on your own data using remote machines on the cloud. You will be able to know what methods are available at any given time in the cloud through our endpoint announcement service and get your results quickly.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
 
 		<!-- Three -->
 			<section id="three" class="main style1 special">
@@ -142,15 +159,14 @@
 			<section id="four" class="main style2 special">
 				<div class="container">
 					<header class="major">
-						<h2>Do you want to contribute?</h2>
+						<h2>Do you want to host a service?</h2>
 					</header>
-					<p>Get involved in the developement of TOMAAT, or host public models using an API KEY.</p>
+					<p>If you have developed a cool algorithm, you can use TOMAAT to host a service and make your model public using a free API KEY. Reach us here!</p>
 					<ul class="actions uniform">
-                        <li><a href="https://github.com/faustomilletari/TOMAAT" target="_blank" class="button">Develop</a></li>
                         <li><a href="mailto:tomaat.segmentation@gmail.com?Subject=[TOMAAT]%20API_KEY%20request" target="_top" class="button special">API KEY</a></li>
 					</ul>
 				</div>
-			</section>
+            </section>
 
 		<!-- Five -->
 		<!--
@@ -471,6 +487,24 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				</div>
 			</section>
 		-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+            function loadDoc(){
+                var htmlServerList="";
+                
+                $.get("http://tomaat.cloud:8001/discover").done(function (data) {
+                                                                var jsonData = JSON.parse(data)
+                                                                for (var idx in jsonData) {
+                                                                    htmlServerList = htmlServerList +
+                                                                "<div class='card'><img src='images/server.png' alt='Server Icon' style='width:50%'><div class='description'><h4><b>" + jsonData[idx].name + "</b></h4><h5>SID: "+ jsonData[idx].SID+ "</h5><h5>"+ jsonData[idx].prediction_url+ "</h5><h5>"+ jsonData[idx].interface_url+ "</h5></div></div>";
+                        
+                                                                }
+                                                                document.getElementById("serverlist").innerHTML = htmlServerList;
+                                                                });
+                                                                
+            }
+        </script>
 
 		<!-- Footer -->
 			<section id="footer">
