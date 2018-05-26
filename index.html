@@ -497,7 +497,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                                                                 var jsonData = JSON.parse(data)
                                                                 for (var idx in jsonData) {
                                                                     htmlServerList = htmlServerList +
-                                                                "<div class='card'><img src='images/server.png' alt='Server Icon' style='width:50%'><div class='description'><h4><b>" + jsonData[idx].name + "</b></h4><h5>SID: "+ jsonData[idx].SID+ "</h5><h5>"+ jsonData[idx].prediction_url+ "</h5><h5>"+ jsonData[idx].interface_url+ "</h5></div></div>";
+                                                                "<div class='card'><img src='images/server.png' alt='Server Icon' class= 'img'><div class='description'><h4><b>" + jsonData[idx].name + "</b></h4><h5>SID: "+ jsonData[idx].SID+ "</h5><h5>"+ jsonData[idx].prediction_url+ "</h5><h5>"+ jsonData[idx].interface_url+ "</h5></div></div>";
                         
                                                                 }
                                                                 document.getElementById("serverlist").innerHTML = htmlServerList;

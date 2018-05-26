@@ -90,16 +90,20 @@
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-    
+        
         .card {
-            width: 250px;
             flex: 0 0 auto;
+            width: 250px;
             transition: 0.3s;
         }
+    }
+    .card img {
+        width: 40%;
+    }
         
-        .description {
-            overflow-x: hidden;
-        }
+    .card description {
+        white-space: nowrap;
+        overflow: hidden;
     }
 
 	@media screen and (max-width: 1680px) {
