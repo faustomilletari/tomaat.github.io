@@ -91,12 +91,14 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         
-        .card {
-            flex: 0 0 auto;
-            width: 250px;
-            transition: 0.3s;
-        }
     }
+    .scrolling-wrapper card {
+        text-align: center;
+        flex: 0 0 auto;
+        width: 250px;
+        transition: 0.3s;
+    }
+
     .card img {
         width: 40%;
     }
