@@ -97,17 +97,19 @@
         position: relative;
         text-align: center;
         flex: 0 0 auto;
-        width: 250px;
         transition: 0.3s;
     }
 
     .card img {
-        width: 40%;
+        max-width: 150px;
+        height: auto;
     }
         
     .description {
         white-space: nowrap;
         overflow: hidden;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 
 	@media screen and (max-width: 1680px) {
