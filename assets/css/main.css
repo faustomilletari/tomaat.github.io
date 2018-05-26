@@ -93,6 +93,8 @@
         
     }
     .scrolling-wrapper card {
+        display: inline-block;
+        position: relative;
         text-align: center;
         flex: 0 0 auto;
         width: 250px;
@@ -103,7 +105,7 @@
         width: 40%;
     }
         
-    .card description {
+    .description {
         white-space: nowrap;
         overflow: hidden;
     }
