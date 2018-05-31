@@ -494,7 +494,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             function loadDoc(){
                 var htmlServerList="";
                 
-                $.get("http://tomaat.cloud:8001/discover").done(function (data) {
+                $.get("https://tomaat.cloud:7001/discover").done(function (data) {
                                                                 var jsonData = JSON.parse(data)
                                                                 for (var idx in jsonData) {
                                                                     htmlServerList = htmlServerList +
