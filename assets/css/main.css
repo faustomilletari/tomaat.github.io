@@ -2072,7 +2072,8 @@
 		margin: 0;
 		padding: 14em 0 14em 0;
 		cursor: default;
-        background-image: url("../../images/leit_motiv.jpg");
+        background: url("../../images/leit_motiv.svg") bottom right no-repeat;
+        background-size: cover;
         
 	}
 
