@@ -156,7 +156,7 @@
                                                                      var jsonData = JSON.parse(data)
                                                                      for (var idx in jsonData) {
                                                                      htmlServerList = htmlServerList +
-                                                                     "<article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>"+jsonData[idx].name+"</h3></header><p>SID: "+ jsonData[idx].SID+ "</br>"+ jsonData[idx].prediction_url+ "</br>"+ jsonData[idx].interface_url+ "</p></article>";
+                                                                     "<article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>"+jsonData[idx].name+"</h3></header><p>SID: "+ jsonData[idx].SID+ "</p><p>"+ jsonData[idx].prediction_url+ "</p><p>"+ jsonData[idx].interface_url+ "</p></article>";
                                                                      }
                                                                      document.getElementById("serverlist").innerHTML = htmlServerList;
                                                                      });
