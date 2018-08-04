@@ -38,6 +38,7 @@
 		var	$window = $(window),
 			$body = $('body');
 
+
 		if (skel.vars.mobile) {
 
 			settings.parallax = false;
@@ -272,29 +273,24 @@
           
           // Init.
           $window.load(function() {
-                       
                        reelWidth = $reel[0].scrollWidth;
-                       
                        skel.on('change', function() {
-                               
                                if (skel.vars.mobile) {
-                               
                                $reel
                                .css('overflow-y', 'hidden')
                                .css('overflow-x', 'scroll')
                                .scrollLeft(0);
                                $forward.hide();
                                $backward.hide();
-                               
+        
                                }
                                else {
-                               
                                $reel
                                .css('overflow', 'visible')
                                .scrollLeft(0);
                                $forward.show();
                                $backward.show();
-                               
+
                                }
                                
                                $t._update();
@@ -305,8 +301,9 @@
                                       reelWidth = $reel[0].scrollWidth;
                                       $t._update();
                                       }).trigger('resize');
-                       
                        });
+                          
+                       
           });
 
 	});

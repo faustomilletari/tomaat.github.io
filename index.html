@@ -20,8 +20,23 @@
             
             gtag('config', 'UA-120153159-1');
         </script>
+        <script type="text/javascript">
+            function loadDoc(){
+                var htmlServerList="";
+                
+                $.get("https://tomaat.cloud:7001/discover").done(function (data) {
+                                                                 var jsonData = JSON.parse(data)
+                                                                 for (var idx in jsonData) {
+                                                                 htmlServerList = htmlServerList +
+                                                                 "<article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>"+jsonData[idx].name+"</h3></header><p>SID: "+ jsonData[idx].SID+ "</p><p>"+ jsonData[idx].prediction_url+ "</p><p>"+ jsonData[idx].interface_url+ "</p></article>";
+                                                                 }
+                                                                 $('#serverlist').html(htmlServerList); 
+                                                                 });
+                                                                 
+            }
+        </script>
 	</head>
-	<body onload="loadDoc()">
+	<body onload="loadDoc();">
 
 		<!-- Header -->
 			<section id="header">
@@ -45,7 +60,7 @@
                 TOMAAT provides you with both <strong>server-side</strong> and <strong>client-side</strong> packages to make this possible.</p>
 				<footer>
 					<a href="https://github.com/faustomilletari/TOMAAT" class="button style2">Code</a>
-                    <a href="https://arxiv.org/abs/1803.06784" class="button style2">Paper</a>
+                    <a href="http://try.tomaat.cloud" class="button style2">Try TOMAAT</a>
                     <a href="https://medium.com/@tomaat.segmentation/" class="button style2">Blog</a>
 				</footer>
 			</section>
@@ -102,7 +117,7 @@
                 </header>
                 <section class="carousel">
                     <div class="reel", id="serverlist">
-                        
+                        <article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>Place Holder</h3></header><p>For service</p><p>realod page</p><p>error</p></article>
                     </div>
                 </section>
             </section>
@@ -137,32 +152,16 @@
 		</section>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-            <script src="assets/js/jquery.onvisible.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-            
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-            
-            <script type="text/javascript">
-                function loadDoc(){
-                    var htmlServerList="";
-                    
-                    $.get("https://tomaat.cloud:7001/discover").done(function (data) {
-                                                                     var jsonData = JSON.parse(data)
-                                                                     for (var idx in jsonData) {
-                                                                     htmlServerList = htmlServerList +
-                                                                     "<article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>"+jsonData[idx].name+"</h3></header><p>SID: "+ jsonData[idx].SID+ "</p><p>"+ jsonData[idx].prediction_url+ "</p><p>"+ jsonData[idx].interface_url+ "</p></article>";
-                                                                     }
-                                                                     document.getElementById("serverlist").innerHTML = htmlServerList;
-                                                                     });
-                                                                     
-                }
-            </script>
-
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/jquery.onvisible.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        
 	</body>
 </html>
