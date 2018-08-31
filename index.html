@@ -1,167 +1,256 @@
 <!DOCTYPE HTML>
 <!--
-	Overflow by HTML5 UP
+	Dopetrope by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
-		<title>TOMAAT</title>
+		<title>Tomaat</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120153159-1"></script>
-        <script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120153159-1"></script>
+		<script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            
+
             gtag('config', 'UA-120153159-1');
         </script>
-        <script type="text/javascript">
+		<script type="text/javascript">
+			function text_truncate(str, length, ending) {
+				if (length == null) {
+				  	length = 100;
+				}
+				if (ending == null) {
+				  	ending = '...';
+				}
+				if (str.length > length) {
+				  	return str.substring(0, length - ending.length) + ending;
+				} else {
+				  	return str;
+				}
+			};
             function loadDoc(){
-                var htmlServerList="";
-                
-                $.get("https://tomaat.cloud:7001/discover").done(function (data) {
-                                                                 var jsonData = JSON.parse(data)
-                                                                 for (var idx in jsonData) {
-                                                                 htmlServerList = htmlServerList +
-                                                                 "<article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>"+jsonData[idx].name+"</h3></header><p>SID: "+ jsonData[idx].SID+ "</p><p>"+ jsonData[idx].prediction_url+ "</p><p>"+ jsonData[idx].interface_url+ "</p></article>";
-                                                                 }
-                                                                 $('#serverlist').html(htmlServerList); 
-                                                                 });
-                                                                 
+            	var htmlServerList="";
+
+                $.get("https://tomaat.cloud:7001/discover").done(
+                	function (data) {
+                		var jsonData = JSON.parse(data)
+                		for (var idx in jsonData) {
+                			htmlServerList = htmlServerList +
+                				"<div class='col-4 col-6-medium col-12-small'><section class='box'><div class='image featured'><img src='images/pic03.jpg' alt='' /></div><header><h3>" +
+                				jsonData[idx].name +
+                				"</h3></header><p>Description: " +
+                				text_truncate(jsonData[idx].description, 150) +
+                				"</p></section></div>";
+                		}$('#serverlist').html(htmlServerList);
+                    }
+                );
             }
+
         </script>
 	</head>
-	<body onload="loadDoc();">
+	<body class="homepage is-preload" onload="loadDoc();">
+		<div id="page-wrapper">
 
-		<!-- Header -->
-			<section id="header">
-				<header>
-					<h1>TOMAAT</h1>
-					<p>Medical Image Analysis in the Cloud</p>
-				</header>
-				<footer>
-					<a href="#banner" class="button style2 scrolly-middle">Get Started</a>
-				</footer>
-			</section>
+			<!-- Header -->
+				<section id="header">
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">Discover</a>
+									<ul>
+										<li><a href="https://medium.com/@tomaat.segmentation/" target="_blank">Blog</a></li>
+										<li><a href="https://hub.docker.com/r/tomaat/services/" target="_blank">Docker registry</a></li>
+										<li><a href="https://github.com/faustomilletari/TOMAAT" target="_blank">GitHub repository</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">Clients</a>
+									<ul>
+										<li><a href="http://slicer.org" target="_blank">3D Slicer</a></li>
+										<li><a href="http://try.tomaat.cloud" target="_blank">Tomaat Glance</a></li>
+										<li><a href="https://itunes.apple.com/us/app/tomaat-cloud/id1422906801?platform=ipad&preserveScrollPosition=true#platform/iphone" target="_blank">Tomaat for iPhone</a></li>
+										<li><a href="https://itunes.apple.com/us/app/tomaat-cloud/id1422906801?platform=ipad&preserveScrollPosition=true#platform/ipad" target="_blank">Tomaat for iPad</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">Resources</a>
+									<ul>
+										<li>
+											<a href="#">Code</a>
+											<ul>
+												<li><a href="https://github.com/faustomilletari/TOMAAT" target="_blank">Tomaat Server</a></li>
+												<li><a href="https://github.com/faustomilletari/TOMAAT-Slicer" target="_blank">3D Slicer Extension</a></li>
+												<li><a href="https://github.com/tomaatcloud/paraview-glance-tomaat" target="_blank">Tomaat Glance</a></li>
+											</ul>
+										</li>
+										<li><a href="https://arxiv.org/abs/1803.06784" target="_blank">Paper</a></li>
+										<li><a href="https://www.youtube.com/channel/UCeubjed3HsoxTxYCaStd1iA" target="_blank">Video Tutorials</a></li>
+										<li><a href="https://www.facebook.com/tomaat.cloud/" target="_blank">Facebook page</a></li>
+										<li><a href="https://tomaat.readthedocs.io/" target="_blank">Documentation</a></li>
+										<li><a href="https://github.com/faustomilletari/TOMAAT/issues" target="_blank">Report an issue</a></li>
 
-		<!-- Banner -->
-			<section id="banner">
-				<header>
-					<h2>An open source project</h2>
-				</header>
-                <p>to deploy, compare and access <strong>deep learning</strong> models for
-                <strong>medical image analysis</strong> over the network.</br>
-                Everything runs in the cloud, so that you can get results everywhere without complications.</br>
-                TOMAAT provides you with both <strong>server-side</strong> and <strong>client-side</strong> packages to make this possible.</p>
-				<footer>
-					<a href="https://github.com/faustomilletari/TOMAAT" class="button style2">Code</a>
-                    <a href="http://try.tomaat.cloud" class="button style2">Try TOMAAT</a>
-                    <a href="https://medium.com/@tomaat.segmentation/" class="button style2">Blog</a>
-				</footer>
-			</section>
+									</ul>
+								</li>
+								<li><a href="mailto:tomaat.segmentation@gmail.com?Subject=[TOMAAT]%20API_KEY%20request">API Key</a></li>
+							</ul>
+						</nav>
 
-		<!-- Feature 1 -->
-			<article id="first" class="container box style1 right">
-				<a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Access </br> deep learning </br> methods</h2>
-					</header>
-                    <p>Use <strong>TOMAAT Client</strong>, through 3D-Slicer or the command line interface to run inference on your own data. Processing happens on the <strong>cloud</strong> through TOMAAT.</p>
-                    <ul class="actions">
-                        <li><a href="https://youtu.be/LmNGqdZ5EH8" class="button">3D Slicer Extension</a></li>
-                    </ul>
-				</div>
-			</article>
+					<!-- Banner -->
+						<section id="banner">
+							<header>
+								<h2>TOMAAT</h2>
+								<p>Medical Image Analysis in the Cloud</p>
+							</header>
+						</section>
 
-		<!-- Feature 2 -->
-			<article class="container box style1 left">
-				<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Make algorithms </br> available</h2>
-					</header>
-					<p>Are you a developer? </br> Take your <strong>trained</strong> deep learning model and pair it up with TOMAAT. You will obtain a <strong>service</strong> that you can conveniently access.</p>
-                    <ul class="actions">
-                        <li><a href="https://github.com/faustomilletari/TOMAAT" class="button">TOMAAT Server</a></li>
-                    </ul>
-				</div>
-			</article>
-            
-        <!-- Feature 3 -->
-            <article class="container box style1 right">
-                <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-                <div class="inner">
-                    <header>
-                        <h2>Get pre-built </br> Docker images</h2>
-                    </header>
-                    <p>Want to host your <strong>own</strong> services? Start by using medical image analysis methods from the literature made <strong>available</strong> for you on DockerHub!
-                    </p>
-                    <ul class="actions">
-                        <li><a href="https://hub.docker.com/r/tomaat/services/" class="button">DockerHub</a></li>
-                    </ul>
-                </div>
-            </article>
-            
-            <article class="box">
-            </article>
-            
-            <section id="banner">
-                <header>
-                    <h2>Currently available public TOMAAT services</h2>
-                </header>
-                <section class="carousel">
-                    <div class="reel", id="serverlist">
-                        <article><img src='images/server.png' alt='Server Icon', class'img'><header><h3>Place Holder</h3></header><p>For service</p><p>realod page</p><p>error</p></article>
-                    </div>
-                </section>
-            </section>
-            
-            <!-- Feature 3 -->
-            <article class="container box style4">
-                <div class="inner">
-                    <header>
-                        <h2>Host a service in your servers</h2>
-                    </header>
-                    <p>You can make your algorithms <strong>publicly</strong> available by obtaining an API key from us. Through this key you will be able to announce your service to our <strong>global model list</strong>.
-                    </p>
-                    <ul class="actions">
-                        <li><a href="mailto:tomaat.segmentation@gmail.com?Subject=[TOMAAT]%20API_KEY%20request" class="button">API key</a></li>
-                    </ul>
-                </div>
-            </article>
-            
+					<!-- Intro -->
+						<section id="intro" class="container">
+							<div class="row">
+								<div class="col-4 col-12-medium">
+									<section class="first">
+										<i class="icon featured fa-cog"></i>
+										<header>
+											<h2>Publish</h2>
+										</header>
+										<p>Are you a developer? Pair up your trained deep learning model with TOMAAT. With just a few lines of code you will turn your science into an easily accessible service.</p>
+									</section>
+								</div>
+								<div class="col-4 col-12-medium">
+									<section class="middle">
+										<i class="icon featured alt fa-flash"></i>
+										<header>
+											<h2>Access</h2>
+										</header>
+										<p>Use TOMAAT Client to run inference on your own data. Processing happens on the cloud through TOMAAT and results can be obtained in seconds. Now even on your phone!</p>
+									</section>
+								</div>
+								<div class="col-4 col-12-medium">
+									<section class="last">
+										<i class="icon featured alt2 fa-star"></i>
+										<header>
+											<h2>Obtain</h2>
+										</header>
+										<p>Want to host your own services? Start by obtaining pre-packaged and published medical image analysis methods from our Docker registry. With a few commands you'll be all set.</p>
+									</section>
+								</div>
+							</div>
+							<footer>
+								<ul class="actions">
+									<li><a href="http://try.tomaat.cloud" class="button large" target="_blank">Try it now!</a></li>
+									<li><a href="https://tomaat.readthedocs.io/" class="button alt large" target="_blank">Learn More</a></li>
+								</ul>
+							</footer>
+						</section>
 
-		<section id="footer">
-			<ul class="icons">
-				<li><a href="https://www.facebook.com/tomaat.cloud/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="https://github.com/faustomilletari/TOMAAT" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="https://medium.com/@tomaat.segmentation/" class="icon fa-medium"><span class="label">Medium</span></a></li>
-				<li><a href="https://tomaat.readthedocs.io" class="icon fa-book"><span class="label">ReadTheDocs</span></a></li>
-			</ul>
-			<div class="copyright">
-				<ul class="menu">
-					<li>&copy; Fausto Milletari. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</div>
-		</section>
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Portfolio -->
+									<section>
+										<header class="major">
+											<h2>Publicly Available Tomaat Services</h2>
+										</header>
+										<div class="row" id="serverlist">
+											<div class="col-4 col-6-medium col-12-small">
+
+											</div>
+										</div>
+									</section>
+
+							</div>
+							<!--
+							<div class="col-12">
+
+									<section>
+										<header class="major">
+											<h2>The Blog</h2>
+										</header>
+										<div class="row">
+											<div class="col-6 col-12-small">
+												<section class="box">
+													<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+													<header>
+														<h3>Magna tempus consequat</h3>
+														<p>Posted 45 minutes ago</p>
+													</header>
+													<p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit  adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+													<footer>
+														<ul class="actions">
+															<li><a href="#" class="button icon fa-file-text">Continue Reading</a></li>
+															<li><a href="#" class="button alt icon fa-comment">33 comments</a></li>
+														</ul>
+													</footer>
+												</section>
+											</div>
+											<div class="col-6 col-12-small">
+												<section class="box">
+													<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+													<header>
+														<h3>Aptent veroeros aliquam</h3>
+														<p>Posted 45 minutes ago</p>
+													</header>
+													<p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit  adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+													<footer>
+														<ul class="actions">
+															<li><a href="#" class="button icon fa-file-text">Continue Reading</a></li>
+															<li><a href="#" class="button alt icon fa-comment">33 comments</a></li>
+														</ul>
+													</footer>
+												</section>
+											</div>
+										</div>
+									</section>
+
+							</div>
+						-->
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<section id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- footer -->
+									<div id="copyright">
+										<ul class="links">
+											<li><a class="icon fa-facebook" href="https://www.facebook.com/tomaat.cloud/"><span class="label">Facebook</span></a></li>
+											<li><a class="icon fa-github" href="https://github.com/faustomilletari/TOMAAT"><span class="label">GitHub</span></a></li>
+											<li><a class="icon fa-medium" href="https://medium.com/@tomaat.segmentation/"><span class="label">Medium</span></a></li>
+											<li><a class="icon fa-book" href="https://tomaat.readthedocs.io/"><span class="label">Read The Docs</span></a></li>
+											<li>&copy; Fausto Milletari - TOMAAT. All rights reserved.</li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+		</div>
 
 		<!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/jquery.poptrox.min.js"></script>
-        <script src="assets/js/jquery.onvisible.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="assets/js/main.js"></script>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</body>
 </html>
